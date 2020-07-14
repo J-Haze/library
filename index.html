@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>Page Title</title>
+  <title>Justin's Library</title>
   <meta name="description" content="Description">
   <meta name="author" content="Justin Hazelton">
   <link rel="stylesheet" href="styles.css">
@@ -12,8 +12,16 @@
   <div id="headline"> My Library: </div>
   <button id="add" type="button">Add Book</button>
   </header>
+  
+  <div id="container">
+  <div id="top">
+    <div id="mainTitle" class= "box">Title</div>
+    <div id="mainAuthor" class= "box">Author</div>
+    <div id="mainPages" class= "box">Pages</div>
+    <div id="mainRead" class= "box">Status</div>
+  </div>
   <div id="library"></div>
-
+</div>
   <div id="modal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -23,7 +31,7 @@
         <input type="number" id="pageForm" placeholder="Number of Pages" value="10"></input>
         <div>
           <input type="radio" id="readForm" name="readStatus" value="read" checked>Read</input>
-          <input type="radio" id="readingForm" name="readStatus" value="reading" check>Reading</input>
+          <input type="radio" id="readingForm" name="readStatus" value="reading">Reading</input>
           <input type="radio" id="notReadForm" name="readStatus" value="notRead">Not Read</input>
         </div>
         <button type="button" id="submit">Submit Book</button>

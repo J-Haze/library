@@ -35,28 +35,98 @@ function render(myLibrary){ //does it need an input?
         let obj = myLibrary[book];
         let newElement = document.createElement('div');
         newElement.id = obj.title;
-        newElement.className = "book";
+        newElement.className = "book box";
         library.appendChild(newElement);
         
         let titleElement = document.createElement('div');
         titleElement.innerHTML = obj.title;
-        titleElement.className = "title";
+        titleElement.className = "title box";
         newElement.appendChild(titleElement);
         
         let authorElement = document.createElement('div');
         authorElement.innerHTML = obj.author;
-        authorElement.className = "author";
+        authorElement.className = "author box";
         newElement.appendChild(authorElement);
 
         let pagesElement = document.createElement('div');
         pagesElement.innerHTML = obj.numberPages;
-        pagesElement.className = "pages";
+        pagesElement.className = "pages box";
         newElement.appendChild(pagesElement);
 
         let readElement = document.createElement('div');
-        readElement.innerHTML = obj.readStatus;
-        readElement.className = "read";
+        readElement.innerHTML = '';
+        readElement.className = "read box";
+        readValue = obj.readStatus
+        console.log(readValue)
         newElement.appendChild(readElement);
+
+        let readButton = document.createElement('div')
+        readButton.innerHTML = 'Read';
+        readButton.className = "toggle readButton";
+        readElement.appendChild(readButton);
+
+        let readingButton = document.createElement('div')
+        readingButton.innerHTML = 'Reading';
+        readingButton.className = "toggle readingButton";
+        readElement.appendChild(readingButton);
+
+        let notReadButton = document.createElement('div')
+        notReadButton.innerHTML = 'Not Read';
+        notReadButton.className = "toggle notReadButton";
+        readElement.appendChild(notReadButton);
+
+
+        if (readValue == "read") {
+            readButton.classList.add("selected");
+            readingButton.classList.remove("selected");
+            notReadButton.classList.remove("selected");
+        };
+        readButton.onclick = function() {
+            readButton.classList.add("selected");
+            readingButton.classList.remove("selected");
+            notReadButton.classList.remove("selected");
+            readValue = "read";
+            obj.readStatus ="read";
+            }
+
+        if (readValue == "reading") {
+            readButton.classList.remove("selected");
+            readingButton.classList.add("selected");
+            notReadButton.classList.remove("selected");
+        };
+        readingButton.onclick = function() {
+            readButton.classList.remove("selected");
+            readingButton.classList.add("selected");
+            notReadButton.classList.remove("selected");
+            readValue = "reading";
+            obj.readStatus ="reading";
+            }
+
+
+        if (readValue == "not read") {
+            readButton.classList.remove("selected");
+            readingButton.classList.remove("selected");
+            notReadButton.classList.add("selected");
+        };
+        notReadButton.onclick = function() {
+            readButton.classList.remove("selected");
+            readingButton.classList.remove("selected");
+            notReadButton.classList.add("selected");
+            readValue = "not read";
+            obj.readStatus ="not read";
+            }
+
+
+
+
+
+
+        // toggle.onclick = function() {
+
+        // }
+
+        //readingButton
+        //notReadButton
 
         // let toggle = document.createElement('div')
         // toggle.innerHTML = 'Change Read Status';
@@ -71,11 +141,11 @@ function render(myLibrary){ //does it need an input?
         // newElement.appendChild(close);
 
         let close = document.createElement('div')
-        close.innerHTML = 'delete';
-        close.className = "delete";
+        close.innerHTML = "⌫";
+        close.className = "delete box";
         close.id = book;
         close.onclick = function() {
-            myLibrary.splice(book,1)
+            myLibrary.splice(close.id,1)
             render(myLibrary)
           }
         newElement.appendChild(close);
