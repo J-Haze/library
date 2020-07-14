@@ -42,6 +42,17 @@ function render(myLibrary){ //does it need an input?
         titleElement.innerHTML = obj.title;
         titleElement.className = "title";
         newElement.appendChild(titleElement);
+
+
+        let close = document.createElement('div')
+        close.innerHTML = 'x';
+        close.id = book;
+        close.onclick = function() {
+            myLibrary.splice(book,1)
+            render(myLibrary)
+          }
+        newElement.appendChild(close);
+ 
         
         let authorElement = document.createElement('div');
         authorElement.innerHTML = obj.author;
@@ -101,15 +112,6 @@ submitButton.addEventListener('click', () => {
     modal.style.display = "none";
 });
 
-// console.log(titleValue)
-// console.log(authorValue)
-// console.log(pageValue)
-// console.log(readValue)
-// console.log(newBook)
-
-// newBook = new createBook('Huck Finn', 'Mark Twain', '400', 'read');
-// console.log(newBook)
-// console.log(myLibrary)
 
 //Also make sure the book has all the fields filled in
 
