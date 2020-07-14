@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Page Title</title>
+  <meta name="description" content="Description">
+  <meta name="author" content="Justin Hazelton">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+  <div> My Library: </div>
+  <button id="add" type="button">Add Book</button>
+  </header>
+  <div id="library"></div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form id="form"> 
+        <input type="text" id="titleForm" placeholder="Title" value="titleA"></input>
+        <input type="text" id="authorForm" placeholder="Author" value="authorA"></input>
+        <input type="number" id="pageForm" placeholder="Number of Pages" value="10"></input>
+        <div>
+          <input type="radio" id="readForm" name="readStatus" value="read" checked>Read</input>
+          <input type="radio" id="readingForm" name="readStatus" value="reading" check>Reading</input>
+          <input type="radio" id="notReadForm" name="readStatus" value="notRead">Not Read</input>
+        </div>
+        <button type="button" id="submit">Submit Book</button>
+      </form>
+    </div>
+  </div>
+  
+<script src="script.js"></script>
+</body>
+</html>
