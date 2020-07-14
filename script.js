@@ -42,17 +42,6 @@ function render(myLibrary){ //does it need an input?
         titleElement.innerHTML = obj.title;
         titleElement.className = "title";
         newElement.appendChild(titleElement);
-
-
-        let close = document.createElement('div')
-        close.innerHTML = 'x';
-        close.id = book;
-        close.onclick = function() {
-            myLibrary.splice(book,1)
-            render(myLibrary)
-          }
-        newElement.appendChild(close);
- 
         
         let authorElement = document.createElement('div');
         authorElement.innerHTML = obj.author;
@@ -68,6 +57,28 @@ function render(myLibrary){ //does it need an input?
         readElement.innerHTML = obj.readStatus;
         readElement.className = "read";
         newElement.appendChild(readElement);
+
+        // let toggle = document.createElement('div')
+        // toggle.innerHTML = 'Change Read Status';
+        // toggle.className = "toggle";
+        // toggle.id = book;
+        // toggle.onclick = function() {
+
+            
+        //     myLibrary.splice(book,1)
+        //     render(myLibrary)
+        //   }
+        // newElement.appendChild(close);
+
+        let close = document.createElement('div')
+        close.innerHTML = 'delete';
+        close.className = "delete";
+        close.id = book;
+        close.onclick = function() {
+            myLibrary.splice(book,1)
+            render(myLibrary)
+          }
+        newElement.appendChild(close);
     }
 }
 
@@ -112,26 +123,14 @@ submitButton.addEventListener('click', () => {
     modal.style.display = "none";
 });
 
+//Add local storage
 
-//Also make sure the book has all the fields filled in
-
-
-//newBook = book(title, author, numberPages, readStatus)
-//addBookToLibrary(newBook)
-
-
-
-//Add "in progress radio"
-//Creat a way to sort the library by "read/unread/reading"
-
-
-
-
+//Create a way to sort the library by "read/unread/reading"
 
 // new book BUTTON that brings up a FORM 
 
 //toggle read
+//^^ do the same way you did etch a sketch toggle?
 
-//add delete button? (specific to book)
 
 
