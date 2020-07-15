@@ -1,5 +1,46 @@
+//Checks that Local Storage is available
+function storageAvailable(type) {
+    var storage;
+    try {
+        storage = window[type];
+        var x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch(e) {
+        return e instanceof DOMException && (
+            // everything except Firefox
+            e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === 'QuotaExceededError' ||
+            // Firefox
+            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            (storage && storage.length !== 0);
+    }
+}
 
-let myLibrary = [];
+if (storageAvailable('localStorage')) {
+    console.log("Local Storage Available");
+  }
+  else {
+    alert("Local Storage Unavailable");
+  }
+
+//Initialize library or load library from LocalStorage
+function getLibrary() {
+    let myLibrary = [];
+    if(localStorage.length > 0) { 
+      myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+    }
+    // console.log(myLibrary)
+    return myLibrary;
+  }
+// let myLibrary = [];
 
 function createBook(title, author, numberPages, readStatus){
     this.title = title
@@ -20,17 +61,22 @@ function addBookToLibrary(createBook) {
 
 //just to practice with
 let newBook;
-const theHobbit = new createBook('The Hobbit', 'J.R.R. Tolkien', '295 pages', 'not read')
-const theGreatGatsby = new createBook('The Great Gatsby', 'F. Scott Fitzgerald', '218 pages', 'read')
+// const theHobbit = new createBook('The Hobbit', 'J.R.R. Tolkien', '295 pages', 'not read')
+// const theGreatGatsby = new createBook('The Great Gatsby', 'F. Scott Fitzgerald', '218 pages', 'read')
 
-// let newBook = theHobbit;
-addBookToLibrary(theHobbit)
-addBookToLibrary(theGreatGatsby)
+// // let newBook = theHobbit;
+// addBookToLibrary(theHobbit)
+// addBookToLibrary(theGreatGatsby)
 
 let lib = document.querySelector('#library');
 
-function render(myLibrary){ //does it need an input?
-    library.innerHTML = ''
+function render(myLibrary){
+    library.innerHTML = '';
+
+    if(library.length === 0) {
+        return;
+      } 
+
     for (book in myLibrary){
         let obj = myLibrary[book];
         let newElement = document.createElement('div');
@@ -75,7 +121,6 @@ function render(myLibrary){ //does it need an input?
         notReadButton.className = "toggle notReadButton";
         readElement.appendChild(notReadButton);
 
-
         if (readValue == "read") {
             readButton.classList.add("selected");
             readingButton.classList.remove("selected");
@@ -87,6 +132,7 @@ function render(myLibrary){ //does it need an input?
             notReadButton.classList.remove("selected");
             readValue = "read";
             obj.readStatus ="read";
+            localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
             }
 
         if (readValue == "reading") {
@@ -100,10 +146,10 @@ function render(myLibrary){ //does it need an input?
             notReadButton.classList.remove("selected");
             readValue = "reading";
             obj.readStatus ="reading";
+            localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
             }
 
-
-        if (readValue == "not read") {
+        if (readValue == "notRead") {
             readButton.classList.remove("selected");
             readingButton.classList.remove("selected");
             notReadButton.classList.add("selected");
@@ -112,47 +158,24 @@ function render(myLibrary){ //does it need an input?
             readButton.classList.remove("selected");
             readingButton.classList.remove("selected");
             notReadButton.classList.add("selected");
-            readValue = "not read";
-            obj.readStatus ="not read";
+            readValue = "notRead";
+            obj.readStatus ="notRead";
+            localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
             }
 
-
-
-
-
-
-        // toggle.onclick = function() {
-
-        // }
-
-        //readingButton
-        //notReadButton
-
-        // let toggle = document.createElement('div')
-        // toggle.innerHTML = 'Change Read Status';
-        // toggle.className = "toggle";
-        // toggle.id = book;
-        // toggle.onclick = function() {
-
-            
-        //     myLibrary.splice(book,1)
-        //     render(myLibrary)
-        //   }
-        // newElement.appendChild(close);
-
-        let close = document.createElement('div')
+        let close = document.createElement('div');
         close.innerHTML = "⌫";
         close.className = "delete box";
         close.id = book;
         close.onclick = function() {
             myLibrary.splice(close.id,1)
+            localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
             render(myLibrary)
           }
         newElement.appendChild(close);
     }
 }
 
-render(myLibrary)
 
 //code for modal & form
 let modal = document.getElementById("modal");
@@ -187,13 +210,17 @@ submitButton.addEventListener('click', () => {
 
     newBook = new createBook(titleValue, authorValue, pageValue, readValue)
 
-    addBookToLibrary(newBook)
-    render(myLibrary)
+    addBookToLibrary(newBook);
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+    render(myLibrary);
     console.log(myLibrary)
     modal.style.display = "none";
 });
 
-//Add local storage
+
+
+let myLibrary = getLibrary();
+render(myLibrary);
 
 //Create a way to sort the library by "read/unread/reading"
 
