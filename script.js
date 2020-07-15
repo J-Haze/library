@@ -1,3 +1,23 @@
+//Firebase
+// Set the configuration for your app
+var config = {
+    apiKey: "AIzaSyB-q_BThNMthxZLXW046q35L98-djqiULI",
+    authDomain: "library-b2ea9.firebaseapp.com",
+    databaseURL: "https://library-b2ea9.firebaseio.com/",
+    storageBucket: "library-b2ea9.appspot.com"
+  };
+  firebase.initializeApp(config);
+
+  // Get a reference to the database service
+  var database = firebase.database();
+
+
+
+
+
+
+
+
 
 let myLibrary = [];
 
