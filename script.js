@@ -112,42 +112,42 @@ function render(myLibrary){
         readElement.appendChild(notReadButton);
 
         if (readValue == "read") {
-            readButton.classList.add("selected");
-            readingButton.classList.remove("selected");
-            notReadButton.classList.remove("selected");
+            readButton.classList.add("readSelected");
+            readingButton.classList.remove("readingSelected");
+            notReadButton.classList.remove("notReadSelected");
         };
         readButton.onclick = function() {
-            readButton.classList.add("selected");
-            readingButton.classList.remove("selected");
-            notReadButton.classList.remove("selected");
+            readButton.classList.add("readSelected");
+            readingButton.classList.remove("readingSelected");
+            notReadButton.classList.remove("notReadSelected");
             readValue = "read";
             obj.readStatus ="read";
             localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
             }
 
         if (readValue == "reading") {
-            readButton.classList.remove("selected");
-            readingButton.classList.add("selected");
-            notReadButton.classList.remove("selected");
+            readButton.classList.remove("readSelected");
+            readingButton.classList.add("readingSelected");
+            notReadButton.classList.remove("notReadSelected");
         };
         readingButton.onclick = function() {
-            readButton.classList.remove("selected");
-            readingButton.classList.add("selected");
-            notReadButton.classList.remove("selected");
+            readButton.classList.remove("readSelected");
+            readingButton.classList.add("readingSelected");
+            notReadButton.classList.remove("notReadSelected");
             readValue = "reading";
             obj.readStatus ="reading";
             localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
             }
 
         if (readValue == "notRead") {
-            readButton.classList.remove("selected");
-            readingButton.classList.remove("selected");
-            notReadButton.classList.add("selected");
+            readButton.classList.remove("readSelected");
+            readingButton.classList.remove("readingSelected");
+            notReadButton.classList.add("notReadSelected");
         };
         notReadButton.onclick = function() {
-            readButton.classList.remove("selected");
-            readingButton.classList.remove("selected");
-            notReadButton.classList.add("selected");
+            readButton.classList.remove("readSelected");
+            readingButton.classList.remove("readingSelected");
+            notReadButton.classList.add("notReadSelected");
             readValue = "notRead";
             obj.readStatus ="notRead";
             localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
