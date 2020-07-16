@@ -1,14 +1,28 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Grenze+Gotisch&family=display=swap"); */
+
+/* #outline{
+    background-color: purple;
+} */
+
 body{
     border: solid blue 1px;
     background: linear-gradient(#000, #000) no-repeat center/2px 100%;
+    /* font-family: 'Lato', sans-serif;
+    font-weight: .5; */
 }
 header {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 700px;
     min-width: 700px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 20px;
-    border: solid red  1px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background-color: purple;
+    color: white;
 }
 
 #container{
@@ -17,6 +31,7 @@ header {
     margin-left: auto;
     margin-right: auto;
 }
+
 #top{
     display: flex;
     margin-left: auto;
@@ -25,24 +40,31 @@ header {
     padding: 2px;
     padding-left: 7px;
     padding-right: 5px;
+    font-weight: bold;
 }
 
 #headline{
     margin-left: auto;
     margin-right: auto;
+    font-size: 2.75em;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
 }
 
 #add{
     border: solid black 1px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 0px;
     width: 100px;
-    height: 20px;
+    height: 40px;
+    border-radius: 15px;
 }
 .box{
-    width: 150px;
+    width: 200px;
     text-align: center;
-    border: solid purple 1px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 #library{
@@ -50,35 +72,32 @@ header {
     flex-direction: column;
     border: green solid 1px;
 }
-
-
 .book{
     display: flex;
-    border: solid black 1px;
+    border: solid red 1px;
+    width: 720px;
+    margin-top: auto;
+    /* margin: auto; */
+    /* margin-bottom: 5px; */
+    /* padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px; */
+}
+
+.card{
+    border: solid cyan 1px;
+    display: flex;
     margin: auto;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
     padding: 2px;
     padding-left: 5px;
     padding-right: 5px;
     width: 700px;
-    
-}
-
-.title{
-    /* width: 200px; */
-}
-
-.author{
-    /* width: 200px; */
-}
-
-.pages{
-    /* width: 200px; */
 }
 
 .read{
-    /* width: 200px; */
-    border: 1px red solid;
+    width: 200px;
+    border: 1px pink solid;
     display: flex;
     align-items: center;
 }
@@ -97,7 +116,12 @@ header {
 }
 
 .delete{
-    width: 20px;
+    width: 100px;
+    margin-right: 5px;
+    /* margin-top: auto; */
+    margin-bottom: auto;
+    
+    /* margin-bottom: 50%; */
     /* width: 150px; */
     /* margin-left: 20px;
     margin-right: 20px; */

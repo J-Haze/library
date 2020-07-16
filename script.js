@@ -37,46 +37,32 @@ function getLibrary() {
     if(localStorage.length > 0) { 
       myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
     }
-    // console.log(myLibrary)
     return myLibrary;
   }
-// let myLibrary = [];
 
+//Constructor to create books
 function createBook(title, author, numberPages, readStatus){
     this.title = title
     this.author = author
     this.numberPages = numberPages
     this.readStatus = readStatus
-    // this.info = function() {
-    //     let info = `${title} by ${author}, ${numberPages}, ${readStatus} yet`
-    //     return info
-    // }
 }
 
-
+//Adds new book to the "library"
 function addBookToLibrary(createBook) {
-    //add something that checks if it's already in the array
     myLibrary.push(createBook);
 }
 
-//just to practice with
+
 let newBook;
-// const theHobbit = new createBook('The Hobbit', 'J.R.R. Tolkien', '295 pages', 'not read')
-// const theGreatGatsby = new createBook('The Great Gatsby', 'F. Scott Fitzgerald', '218 pages', 'read')
-
-// // let newBook = theHobbit;
-// addBookToLibrary(theHobbit)
-// addBookToLibrary(theGreatGatsby)
-
 let lib = document.querySelector('#library');
 
+//Renders library on the webpage
 function render(myLibrary){
     library.innerHTML = '';
-
     if(library.length === 0) {
         return;
       } 
-
     for (book in myLibrary){
         let obj = myLibrary[book];
         let newElement = document.createElement('div');
@@ -84,27 +70,31 @@ function render(myLibrary){
         newElement.className = "book box";
         library.appendChild(newElement);
         
+        let card = document.createElement('div');
+        card.className = "card box";
+        newElement.appendChild(card);
+
         let titleElement = document.createElement('div');
         titleElement.innerHTML = obj.title;
         titleElement.className = "title box";
-        newElement.appendChild(titleElement);
+        card.appendChild(titleElement);
         
         let authorElement = document.createElement('div');
         authorElement.innerHTML = obj.author;
         authorElement.className = "author box";
-        newElement.appendChild(authorElement);
+        card.appendChild(authorElement);
 
         let pagesElement = document.createElement('div');
         pagesElement.innerHTML = obj.numberPages;
         pagesElement.className = "pages box";
-        newElement.appendChild(pagesElement);
+        card.appendChild(pagesElement);
 
         let readElement = document.createElement('div');
         readElement.innerHTML = '';
         readElement.className = "read box";
         readValue = obj.readStatus
         console.log(readValue)
-        newElement.appendChild(readElement);
+        card.appendChild(readElement);
 
         let readButton = document.createElement('div')
         readButton.innerHTML = 'Read';
@@ -177,7 +167,7 @@ function render(myLibrary){
 }
 
 
-//code for modal & form
+//Modal & form
 let modal = document.getElementById("modal");
 let addBtn = document.getElementById("add");
 let span = document.getElementsByClassName("close")[0];
@@ -195,7 +185,6 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-
 
 //Take the input from form and make new book
 let submitButton = document.getElementById("submit");
@@ -217,17 +206,9 @@ submitButton.addEventListener('click', () => {
     modal.style.display = "none";
 });
 
-
-
 let myLibrary = getLibrary();
 render(myLibrary);
 
-//Create a way to sort the library by "read/unread/reading"
-
-// new book BUTTON that brings up a FORM 
-
-//toggle read
-//^^ do the same way you did etch a sketch toggle?
 
 
 
