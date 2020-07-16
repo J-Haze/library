@@ -72,13 +72,12 @@ header {
 }
 
 .card{
-    border: solid rgb(233, 233, 233) 1px;
+    border: solid purple 1px;
     display: flex;
     margin: auto;
     margin-bottom: 2px;
     margin-top: 2px;
     width: 700px;
-    border-radius: 3px;
 }
 
 .read{
