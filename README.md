@@ -1,2 +1,4 @@
 # library
-List of books that I've read, and that I want to read
+App to organize a list of books you've read and plan to read.
+
+Demo: https://j-haze.github.io/library/
