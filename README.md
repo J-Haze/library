@@ -14,8 +14,8 @@ Create a "Library" that contains a list of the books that you want to read. The 
 
 ### Built With: ###
 
-* HTML/CSS
 * JavaScript
+* HTML/CSS
 * Webpack
 * Local Storage
 
