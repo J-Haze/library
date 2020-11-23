@@ -1,4 +1,4 @@
-## To-Do List
+## Library App
 App to organize a list of books you've read and plan to read.
 
 🔗 **Live preview** of the app is [here](https://j-haze.github.io/library/).
